@@ -7,8 +7,26 @@ import Votes from "./pages/Votes";
 import Statistics from "./pages/Statistics";
 import Layout from "./components/Layout";
 import "./index.css";
+import { socket } from "./main";
+import { addVotes } from "./features/candidatesSlice";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addVote } from "./types/redux";
+
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    const handlePublishVote = (candidateid:addVote) => {
+      dispatch(addVotes(candidateid))
+    }
+    socket.on("updateVotes", handlePublishVote)
+    return () => {
+      socket.off("updateVotes", handlePublishVote)
+    }
+  }, [socket])
+  
   return (
     <div className="App">
       <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>

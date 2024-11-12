@@ -1,7 +1,7 @@
 // src/features/userSlice.ts
 
-import { ActionReducerMapBuilder, createAsyncThunk, createSlice,} from "@reduxjs/toolkit";
-import { DataStatus, userState } from "../types/redux";
+import { ActionReducerMapBuilder, createAsyncThunk, createSlice, PayloadAction,} from "@reduxjs/toolkit";
+import { DataStatus, updateVote, userState } from "../types/redux";
 import { IUser } from "../types/user";
 
 const initialState: userState = {
@@ -63,6 +63,13 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    initUser:(state, action: PayloadAction) => {
+      state.user = null
+  },
+    updateVotes:(state, action:PayloadAction<updateVote>)=>{
+      state.user!.hasVoted = action.payload.hasVoted
+      state.user!.votedFor = action.payload.votedFor!
+  },
     logout: (state) => {
       state.user = null;
       state.status = DataStatus.IDLE;
@@ -105,5 +112,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { logout } = userSlice.actions;
+export const { logout, updateVotes, initUser } = userSlice.actions;
 export default userSlice.reducer;

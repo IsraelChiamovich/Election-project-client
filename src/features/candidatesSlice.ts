@@ -1,7 +1,7 @@
 // src/features/candidatesSlice.ts
 
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { candidateState, DataStatus } from "../types/redux";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { addVote, candidateState, DataStatus } from "../types/redux";
 
 const initialState: candidateState = {
   error: null,
@@ -33,7 +33,16 @@ export const fetchCandidates = createAsyncThunk(
 const candidatesSlice = createSlice({
   name: "candidates",
   initialState,
-  reducers: {},
+  reducers: {
+    addVotes: (state, action: PayloadAction<addVote>) => {
+      state.candidates?.forEach(c => {
+          if (c._id === action.payload.candidateId) {
+              c.votes += 1;
+          }
+      });
+      console.log('here')
+  }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCandidates.pending, (state) => {
@@ -51,4 +60,5 @@ const candidatesSlice = createSlice({
   },
 });
 
+export const { addVotes } = candidatesSlice.actions;
 export default candidatesSlice.reducer;

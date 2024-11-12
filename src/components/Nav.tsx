@@ -3,7 +3,7 @@
 import { RootState, useAppDispatch, useAppSelector } from "../store/store";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../index.css";
-import { logout } from "../features/userSlice"; // מייבא רק את logout
+import { logout } from "../features/userSlice"; 
 
 export default function Nav() {
   const user = useAppSelector((state: RootState) => state.user);
@@ -11,7 +11,7 @@ export default function Nav() {
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {
-    dispatch(logout()); // משתמש בפעולה logout ישירות
+    dispatch(logout());
     navigate("/login");
   };
 

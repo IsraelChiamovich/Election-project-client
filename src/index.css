@@ -136,8 +136,39 @@ h1 {
 }
 
 .statistics {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
   height: 90%;
-  display: flex;
-  flex-direction: column;
+  padding: 2rem;
+  width: 70%;
   gap: 15%;
+}
+
+.error-message {
+  color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.1);
+  padding: 0.8rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.votes-count {
+  background-color: rgba(106, 190, 224, 0.9);
+  border-radius: 10px;
+  font-size: 1.5rem;
+  margin: 10px;
+}
+
+.you-didnt-voted {
+  background-color: rgba(224, 106, 106, 0.9);
+  border-radius: 10px;
+  font-size: 1.5rem;
+  margin: 10px;
+}
+
+.you-voted {
+  background-color: rgba(117, 235, 87, 0.9);
+  border-radius: 10px;
+  font-size: 1.5rem;
+  margin: 10px;
 }

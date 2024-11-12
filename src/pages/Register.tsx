@@ -11,6 +11,7 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleRegister = async () => {
     try {
@@ -19,25 +20,25 @@ export default function Register() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          username,
-          password,
-          isAdmin,
-        }),
+        body: JSON.stringify({ username, password, isAdmin }),
       });
-      if (!response.ok) throw new Error("faild to register");
-      else {
-        console.log(await response.json());
+      
+      if (!response.ok) {
+        const message = await response.json();
+        throw new Error(message);
       }
+
+      navigate("/login");
     } catch (error) {
-      console.log((error as Error).message);
+      setError((error as Error).message);
     }
   };
+
   useEffect(() => {
     if (user?._id) {
       navigate("/votes");
     }
-  }, []);
+  }, [user, navigate]);
 
   return (
     <div className="register">
@@ -66,6 +67,7 @@ export default function Register() {
         Admin
       </label>
       <button onClick={handleRegister}>Register</button>
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 }

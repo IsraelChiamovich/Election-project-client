@@ -21,3 +21,12 @@ export interface candidateState {
   status: DataStatus;
   candidates: ICandidate[] | null;
 }
+
+export interface addVote {
+  candidateId: string;
+}
+
+export interface updateVote {
+  hasVoted: boolean;
+  votedFor: string | null;
+}
