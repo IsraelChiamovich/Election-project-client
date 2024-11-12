@@ -4,17 +4,19 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { useNavigate } from "react-router-dom";
 import { fetchCandidates } from "../features/candidatesSlice";
-import VoteCard from "../components/VoteCard";
+import VoteCard from "./VoteCard";
 
 export default function Vote() {
-  const {user} = useAppSelector((state)=> state.user)
-  const {candidates} = useAppSelector((state)=> state.candidates)
+  const { user } = useAppSelector((state) => state.user);
+  const { candidates } = useAppSelector((state) => state.candidates);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user?._id){navigate('/login')}
-    dispatch(fetchCandidates())
+    if (!user?._id) {
+      navigate("/login");
+    }
+    dispatch(fetchCandidates());
   }, [user]);
 
   return (
@@ -26,6 +28,5 @@ export default function Vote() {
         ))}
       </div>
     </div>
-    
-  )
+  );
 }

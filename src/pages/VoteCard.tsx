@@ -1,10 +1,9 @@
-// src/components/VoteCard.tsx
+// src/pages/VoteCard.tsx
 
-import React from "react";
 import { ICandidate } from "../types/candidates";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { fetchProfileUpdate } from "../features/userSlice";
-import { useFetchCandidates } from "../hooks/useFetchCandidates";
+import { fetchCandidates } from "../features/candidatesSlice";
 
 interface props {
   candidate: ICandidate;
@@ -18,7 +17,7 @@ export default function VoteCard({ candidate }: props) {
     try {
       const token = localStorage.getItem("Authorization")!;
       await fetch("http://localhost:3000/api/votes", {
-        method: "POST",
+        method: "post",
         headers: {
           "Content-Type": "application/json",
           Authorization: token,
@@ -28,6 +27,7 @@ export default function VoteCard({ candidate }: props) {
           userId: user?._id,
         }),
       });
+      dispatch(fetchCandidates());
       dispatch(fetchProfileUpdate(user?._id!));
     } catch (err) {
       console.log(err);
@@ -39,11 +39,11 @@ export default function VoteCard({ candidate }: props) {
       <img src={candidate.image} alt={candidate.name} />
       <h2>{candidate.name}</h2>
       <p>{candidate.votes}</p>
-      {!user?.hasVoted && <button onClick={handleVote}>Vote</button>}
-      {user?.hasVoted && user.votedFor === candidate._id ? (
-        <p>You voted for this candidate!</p>
+      {!user?.hasVoted && <button onClick={() => handleVote()}>Vote</button>}
+      {user?.hasVoted && user?.votedFor == candidate._id ? (
+        <p>you vote for me!!!</p>
       ) : (
-        <p>You didn't vote for this candidate</p>
+        <p>you didn't vote for me</p>
       )}
     </div>
   );

@@ -1,11 +1,6 @@
 // src/features/userSlice.ts
 
-import {
-  ActionReducerMapBuilder,
-  createAsyncThunk,
-  createSlice,
-  PayloadAction,
-} from "@reduxjs/toolkit";
+import { ActionReducerMapBuilder, createAsyncThunk, createSlice,} from "@reduxjs/toolkit";
 import { DataStatus, userState } from "../types/redux";
 import { IUser } from "../types/user";
 
@@ -30,7 +25,7 @@ export const fetchLogin = createAsyncThunk(
         return thunkApi.rejectWithValue("Login failed");
       }
       const data = await response.json();
-      localStorage.setItem("Authorization", data.token); // שמירת הטוקן ב-localStorage
+      localStorage.setItem("Authorization", data.token);
       return thunkApi.fulfillWithValue(data.user);
     } catch (error) {
       return thunkApi.rejectWithValue(
@@ -72,7 +67,7 @@ const userSlice = createSlice({
       state.user = null;
       state.status = DataStatus.IDLE;
       state.error = null;
-      localStorage.removeItem("Authorization"); // מחיקת הטוקן מה-localStorage
+      localStorage.removeItem("Authorization");
     },
   },
   extraReducers: (builder: ActionReducerMapBuilder<userState>) => {
@@ -110,5 +105,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { logout } = userSlice.actions; // ייצוא פעולת ה-logout
+export const { logout } = userSlice.actions;
 export default userSlice.reducer;

@@ -11,13 +11,13 @@ export enum DataStatus {
 }
 
 export interface userState {
-    error: string | null;
-    status: DataStatus;
-    user: IUser | null;
+  error: string | null;
+  status: DataStatus;
+  user: IUser | null;
 }
 
 export interface candidateState {
-    error: string | null;
-    status: DataStatus;
-    candidates: ICandidate[] | null;
+  error: string | null;
+  status: DataStatus;
+  candidates: ICandidate[] | null;
 }

@@ -7,10 +7,10 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 const store = configureStore({
-    reducer: {
-        user: userReducer,
-        candidates: candidatesReducer
-    },
+  reducer: {
+    user: userReducer,
+    candidates: candidatesReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

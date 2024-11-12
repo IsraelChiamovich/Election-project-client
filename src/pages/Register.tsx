@@ -3,12 +3,11 @@
 import { useEffect, useState } from "react";
 import "../index.css";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../store/store";
+import { useAppSelector } from "../store/store";
 
 export default function Register() {
   const { user } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
