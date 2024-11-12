@@ -3,17 +3,24 @@
 import { Outlet } from "react-router-dom";
 import Nav from "./Nav";
 import "../index.css";
+import { RootState, useAppSelector } from "../store/store";
 
 export default function Layout() {
+  const user = useAppSelector((state: RootState) => state.user.user);
   return (
-    <div>
-      <Nav />
+    <>
+      {/* {user ? <div>{JSON.stringify(user)}</div> : null} */}
+      <div className="layout">
+        <Nav />
 
-      <Outlet />
+        <main className="content">
+          <Outlet />
+        </main>
 
-      <footer className="footer">
-        <p>&copy; 2023 Election Project. All rights reserved.</p>
-      </footer>
-    </div>
+        <footer className="footer">
+          <p>&copy; 2023 Election Project. All rights reserved.</p>
+        </footer>
+      </div>
+    </>
   );
 }

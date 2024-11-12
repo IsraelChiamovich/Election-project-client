@@ -13,12 +13,17 @@ export const fetchCandidates = createAsyncThunk(
   "candidates/fetch",
   async (_, thunkApi) => {
     try {
-      const response = await fetch("http://localhost:3000/api/candidates");
-      if (!response.ok) {
-        const error = await response.json();
+      const token = localStorage.getItem("Authorization");
+      const res = await fetch("http://localhost:3000/api/candidates", {
+        headers: {
+          Authorization: token!,
+        },
+        });
+      if (!res.ok) {
+        const error = await res.json();
         return thunkApi.rejectWithValue(error);
       }
-      return await response.json();
+      return await res.json();
     } catch (error) {
       return thunkApi.rejectWithValue("Failed to fetch candidates");
     }
