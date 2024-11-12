@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { useNavigate } from "react-router-dom";
 import { fetchCandidates } from "../features/candidatesSlice";
-import VoteCard from "./VoteCard";
+import VoteCard from "../components/VoteCard";
 
 export default function Vote() {
   const {user} = useAppSelector((state)=> state.user)

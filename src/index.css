@@ -1,4 +1,3 @@
-/* עיצוב כללי */
 * {
   margin: 0;
   padding: 0;
@@ -10,33 +9,27 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-image: url('https://images.pexels.com/photos/8849340/pexels-photo-8849340.jpeg?auto=compress&cs=tinysrgb&w=400');
+  background-image: url("https://images.pexels.com/photos/8849340/pexels-photo-8849340.jpeg?auto=compress&cs=tinysrgb&w=400");
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   background-attachment: fixed;
-  color: #fff;
 }
 
 .layout {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  color: #fff;
 }
 
 .nav {
-  width: 100%;
   background-color: rgba(18, 33, 74, 0.9);
-  padding: 1.2rem 2rem;
+  padding: 1rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.1rem;
+  justify-content: space-around;
+  font-size: 18px;
 }
 
 .nav a {
-  color: #ecf0f1;
+  color: white;
   text-decoration: none;
   padding: 0.6rem 1.2rem;
   border-radius: 5px;
@@ -49,22 +42,16 @@ body {
 .nav a.active {
   background-color: #2980b9;
   font-weight: bold;
-  color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .nav button {
   background-color: #e74c3c;
-  color: #ecf0f1;
+  color: white;
   border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.nav button:hover {
-  background-color: #c0392b;
+  font-size: 18px;
 }
 
 .content {
@@ -73,26 +60,21 @@ body {
   justify-content: center;
   align-items: flex-start;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .vote-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 1rem;
 }
 
 .vote-card {
   width: 300px;
-  border: 1px solid #ddd;
   border-radius: 10px;
   padding: 1rem;
   margin: 1rem;
   text-align: center;
   background-color: #fff;
-  color: #333;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .vote-card img {
@@ -108,11 +90,6 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.vote-card button:hover {
-  background-color: #2980b9;
 }
 
 .footer {
@@ -125,18 +102,14 @@ body {
 .login, .register {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
   padding: 2rem;
   background-color: rgba(255, 255, 255, 0.9);
-  color: #333;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .login input, .register input {
-  width: 100%;
   padding: 0.5rem;
   margin: 0.5rem 0;
   border: 1px solid #ddd;
@@ -150,18 +123,6 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 100%;
-  transition: background-color 0.3s;
-}
-
-.login button:hover, .register button:hover {
-  background-color: #2980b9;
-}
-
-.isAdmin {
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
 }
 
 .isAdmin input {
@@ -169,8 +130,14 @@ body {
 }
 
 h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 3rem;
   text-align: center;
-  color: black;
+  color: rgb(47, 58, 204);
+}
+
+.statistics {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 15%;
 }
