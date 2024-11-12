@@ -35,29 +35,29 @@ export const fetchLogin = createAsyncThunk(
   }
 );
 
-export const fetchProfileUpdate = createAsyncThunk(
-  "user/profile",
-  async (id: string, thunkApi) => {
-    try {
-      const token = localStorage.getItem("Authorization");
-      const res = await fetch("http://localhost:3000/api/users/profile", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token!,
-        },
-        body: JSON.stringify({ id }),
-      });
-      if (!res.ok) {
-        const error = await res.json();
-        return thunkApi.rejectWithValue(error);
-      }
-      return await res.json();
-    } catch (err) {
-      thunkApi.rejectWithValue("Can't login, please try again");
-    }
-  }
-);
+// export const fetchProfileUpdate = createAsyncThunk(
+//   "user/profile",
+//   async (id: string, thunkApi) => {
+//     try {
+//       const token = localStorage.getItem("Authorization");
+//       const res = await fetch("http://localhost:3000/api/users/profile", {
+//         method: "post",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization: token!,
+//         },
+//         body: JSON.stringify({ id }),
+//       });
+//       if (!res.ok) {
+//         const error = await res.json();
+//         return thunkApi.rejectWithValue(error);
+//       }
+//       return await res.json();
+//     } catch (err) {
+//       thunkApi.rejectWithValue("Can't login, please try again");
+//     }
+//   }
+// );
 
 const userSlice = createSlice({
   name: "user",
@@ -94,21 +94,21 @@ const userSlice = createSlice({
         state.error = action.payload as string;
         state.user = null;
       })
-      .addCase(fetchProfileUpdate.fulfilled, (state, action) => {
-        state.status = DataStatus.SUCCESS;
-        state.error = null;
-        state.user = action.payload as IUser;
-      })
-      .addCase(fetchProfileUpdate.rejected, (state, action) => {
-        state.status = DataStatus.FAILED;
-        state.error = action.payload as string;
-        state.user = null;
-      })
-      .addCase(fetchProfileUpdate.pending, (state) => {
-        state.status = DataStatus.LOADING;
-        state.error = null;
-        state.user = null;
-      });
+      // .addCase(fetchProfileUpdate.fulfilled, (state, action) => {
+      //   state.status = DataStatus.SUCCESS;
+      //   state.error = null;
+      //   state.user = action.payload as IUser;
+      // })
+      // .addCase(fetchProfileUpdate.rejected, (state, action) => {
+      //   state.status = DataStatus.FAILED;
+      //   state.error = action.payload as string;
+      //   state.user = null;
+      // })
+      // .addCase(fetchProfileUpdate.pending, (state) => {
+      //   state.status = DataStatus.LOADING;
+      //   state.error = null;
+      //   state.user = null;
+      // });
   },
 });
 

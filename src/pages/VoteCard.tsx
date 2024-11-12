@@ -2,8 +2,7 @@
 
 import { ICandidate } from "../types/candidates";
 import { useAppDispatch, useAppSelector } from "../store/store";
-import { fetchProfileUpdate, updateVotes } from "../features/userSlice";
-import { fetchCandidates } from "../features/candidatesSlice";
+import { /*fetchProfileUpdate,*/ updateVotes } from "../features/userSlice";
 import { socket } from "../main";
 
 interface props {
